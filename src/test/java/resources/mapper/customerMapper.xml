@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxx.test.dao.CustomerDao">
+
+    <resultMap id="resultMap" type="com.xxx.test.domain.Customer">
+        <id column="id_" jdbcType="BIGINT" property="id"/>
+        <result column="name_" jdbcType="VARCHAR" property="name"/>
+        <result column="region_" jdbcType="VARCHAR" property="region"/>
+    </resultMap>
+
+    <!-- 根据事件id、事件类型、员工工号查询点赞记录 -->
+    <select id="selectCustomer" resultType="java.lang.Long">
+        SELECT
+            *
+        FROM customer
+        WHERE
+            id_ = #{id,jdbcType=BIGINT}
+    </select>
+
+
+    <!-- 新增点赞记录 -->
+    <insert id="insertCustomer" parameterType="com.xxx.test.domain.Customer"
+            useGeneratedKeys="true" keyProperty="id">
+                insert into customer (
+                            name_,
+                            region_
+                        ) values (
+                                    #{name},
+                                    #{region}
+                        )
+    </insert>
+
+
+</mapper>
