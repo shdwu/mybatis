@@ -10,7 +10,7 @@
     </resultMap>
 
     <!-- 根据事件id、事件类型、员工工号查询点赞记录 -->
-    <select id="selectCustomer" resultType="java.lang.Long">
+    <select id="selectCustomer" resultMap="resultMap">
         SELECT
             *
         FROM customer
